@@ -1,0 +1,78 @@
+.projetos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.pesquisa{
+    background-color: rgb(255, 255, 255);
+    width: 50%;
+    display: flex;
+    align-items: center;
+    height: 2.6rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.pesquisa input {
+    width: 94%;
+    height: 2.4rem;
+    border-radius: 10px;
+    border: none;
+}
+
+.pesquisa img{
+    width: 2rem;
+    height: 2rem;
+    margin-left: 0.4rem;
+}
+
+.repositorio h1, p{
+    margin: 0;
+    text-align: start;
+}
+
+.repositorio{
+    display: flex;
+    background-color: #d9d9d9;
+    width: 70%;
+    height: 18vh;
+    margin-top: 3rem;
+    border-radius: 15px;
+}
+
+.informacoes{
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    margin-left: 1rem;
+    width: 80%;
+    color: black;
+}
+
+.button {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-left: 1rem;
+}
+    
+.textButton{
+    display: flex;
+    background-color: rgb(85, 224, 148);
+    width: 8rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: white;
+}
+
+
+
+.textButton:hover{
+    background-color: rgb(80, 224, 80);
+    color: rgb(216, 255, 216);
+    cursor: pointer;
+}

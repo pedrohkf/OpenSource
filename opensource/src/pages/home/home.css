@@ -1,0 +1,9 @@
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home p {
+    padding-top: 3rem;
+}

@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.itemMenu {
+    font-size: 25px;
+    color: #8e9ead;
+    text-decoration: none;
+    margin-top: 3.5vh;
+}
+
+.menu {
+    display: flex;
+    background-color: #191f26;
+    height: 10vh;
+    column-gap: 30rem;    
+    justify-content: center;
+}
+
+.itemMenu:hover{
+    cursor: pointer;
+    color: white;
+}
