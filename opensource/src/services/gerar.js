@@ -13,7 +13,8 @@ async function Nomes(){
             .catch((e) => {
                 console.log("ops! Usuário inválido" + e);
             });
-    return user;   
+            
+    return ['davi', 'pedro', 'lidia'];   
     
 }
 
