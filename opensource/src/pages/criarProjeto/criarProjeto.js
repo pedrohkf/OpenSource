@@ -2,50 +2,55 @@ import React, {useState} from "react";
 import { ReactDOM } from "react-dom";
 import './criarProjeto.css'
 
+import { useNavigate } from "react-router-dom";
+
 import Menu from './../../components/menu/menu';
 
 import axios from 'axios';
 
 function CriarProjetos() {
-    const [name, setName] = useState('');
-    const [link, setLink] = useState('');
-    const [desc, setDesc] = useState('');
+    const [projeto, setProjeto] = useState({
+        pro_nome: "",
+        pro_descricao: "",
+        pro_linkProjeto: "",
+    });
+    
+
+    const navigate = useNavigate()
     
     const handleChange = (e) => {
-        setName(e.target.value);
+        setProjeto((prev) => ({...prev, [e.target.name]: e.target.value }));
     }
         
-    const handleLinkChange = (e) => {
-        setLink(e.target.value);
-    }
-        
-    const handleDescChange = (e) => {
-        setDesc(e.target.value);
-    }
 
 
-    const handleSubmit = (e) => {
-        alert(`Name: ${name}, ${link}, ${desc}`);
-
+    const handleClick =  async e => {
         e.preventDefault();
+        try{
+            await axios.post("http://localhost:8800/projeto", projeto)
+            navigate("/projetos")
+        }catch(err){
+            console.log(err)
+        }
+        console.log("enviar API");
     } 
 
     return (
 
         <>
             <Menu />
-            <form className="criarprojeto" onSubmit={(e) => {handleSubmit(e)}}>
+            <form className="criarprojeto">
                 <div className="container">
                     <h1>Criar Projeto</h1>
                     <div className="Projectinformation">
                         <label>nome projeto</label>
-                        <input type="text" value={name} required onChange={(e) => {handleChange(e)}} className="camposPrenchimento" ></input>
+                        <input type="text" onChange={handleChange} name="pro_nome" className="camposPrenchimento" ></input>
                         <label>link projeto</label>
-                        <input type="text" value={link} required onChange={(e) => {handleLinkChange(e)}} className="camposPrenchimento" ></input>
+                        <input type="text" onChange={handleChange} name="pro_linkProjeto"className="camposPrenchimento" ></input>
                         <label>descrição</label>
-                        <textarea type="text" value={desc} required onChange={(e) => {handleDescChange(e)}} className="camposPrenchimento"></textarea>
+                        <textarea type="text" onChange={handleChange} name="pro_descricao" className="camposPrenchimento"></textarea>
                         <div className="buttonAdicionar" >
-                            <input type="submit" value="Adicionar"></input>
+                            <input type="submit" onClick={handleClick}></input>
                         </div>
                     </div>
                 </div>
@@ -53,7 +58,7 @@ function CriarProjetos() {
             </form>
         </>
     )
-}
 
+}
 
 export default CriarProjetos;

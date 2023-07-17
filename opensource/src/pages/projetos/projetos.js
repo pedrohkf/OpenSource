@@ -1,56 +1,57 @@
 import './projetos.css';
 import Menu from './../../components/menu/menu';
 
-import React, { Component, useEffect, useState } from "react";
-import Nomes from "../../services/gerar"
+import axios from 'axios';
+import React, { Component } from "react";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import IntegracaoAPI from "../../services/IntegracaoAPI"
 
+const Projetos = () => {
+    const [projetos, setProjetos] = useState([])
 
-class Projetos extends Component {
+    useEffect(() => {
+        const fetchAllUsuarios = async () => {
+            try {
+                const res = await axios.get("http://localhost:8800/projeto")
+                setProjetos(res.data)
+                console.log(res);
+            } catch(e) {
+                console.log(e)
+            }
+        } 
+        fetchAllUsuarios()  
+    },[])
 
-    state = {
-        usuarios: []
-    }
-
-    async componentDidMount() {
-        const response = await Nomes()
-        this.setState({ usuarios: response });
-
-    }
-
-    render() {
-        const { usuarios } = this.state;
-
-        return (
-            <>
-                <Menu />
-                <div class="projetos">
-                    <div class="container">
-                        <h1>Projetos</h1>
-                        <div class="pesquisa">
-                            <input type="text"></input>
-                            <img src="https://cdn-icons-png.flaticon.com/512/64/64673.png"></img>
-                        </div>
-                        {
-                            usuarios.map(x => <div className='repositorio'>
+    return(
+        <>
+                 <Menu />
+                 <div class="projetos">
+                     <div class="container">
+                       <h1>Projetos</h1>
+                         <div class="pesquisa">
+                             <input type="text"></input>
+                             <img src="https://cdn-icons-png.flaticon.com/512/64/64673.png"></img>
+                         </div>
+                            {projetos.map((x) => (<div className='repositorio' key={x.pro_id}>
                                 
                                 <div class="informacoes">
-                                <h1>{x}</h1>
+                                <h1 >{x.pro_nome}</h1>
+                                <p>{x.pro_descricao}</p>
 
                                 </div>
                                 <div class="button">
-                                    <div class="textButton">
-                                        <p>Saiba mais</p>
-                                    </div>
+                                    <a href={x.pro_linkProjeto} target='_blank'>
+                                        <div class="textButton">
+                                            <p>Saiba mais</p>
+                                        </div>
+                                    </a>
                                 </div>
-                            </div>)
-                        }
+                            </div>))}
                     </div>
                 </div>
             </>
-
-        )
-    }
-
+    )
 }
 
 export default Projetos;

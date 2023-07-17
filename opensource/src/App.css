@@ -8,6 +8,10 @@ body{
   margin-top: 10rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container{
   display: flex;
   flex-direction: column;
