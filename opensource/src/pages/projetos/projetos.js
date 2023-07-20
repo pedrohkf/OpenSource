@@ -2,9 +2,7 @@ import './projetos.css';
 import Menu from './../../components/menu/menu';
 
 import axios from 'axios';
-import React, { Component } from "react";
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { Component, useEffect, useState } from "react";
 import IntegracaoAPI from "../../services/IntegracaoAPI"
 
 const Projetos = () => {
@@ -15,7 +13,6 @@ const Projetos = () => {
             try {
                 const res = await axios.get("http://localhost:8800/projeto")
                 setProjetos(res.data)
-                console.log(res);
             } catch(e) {
                 console.log(e)
             }

@@ -3,18 +3,17 @@ import { ReactDOM } from "react-dom";
 import './criarProjeto.css'
 
 import { useNavigate } from "react-router-dom";
-
 import Menu from './../../components/menu/menu';
-
 import axios from 'axios';
 
 function CriarProjetos() {
+
+
     const [projeto, setProjeto] = useState({
         pro_nome: "",
         pro_descricao: "",
         pro_linkProjeto: "",
     });
-    
 
     const navigate = useNavigate()
     
@@ -49,8 +48,8 @@ function CriarProjetos() {
                         <input type="text" onChange={handleChange} name="pro_linkProjeto"className="camposPrenchimento" ></input>
                         <label>descrição</label>
                         <textarea type="text" onChange={handleChange} name="pro_descricao" className="camposPrenchimento"></textarea>
-                        <div className="buttonAdicionar" >
-                            <input type="submit" onClick={handleClick}></input>
+                        <div className="buttonAdicionar" onClick={handleClick} >
+                            <input type="submit" ></input>
                         </div>
                     </div>
                 </div>

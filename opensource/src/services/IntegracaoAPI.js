@@ -6,16 +6,13 @@ async function IntegracaoAPI(){
         await api
             .get('/projeto')
             .then((response) => {
-
                 projetos = response.data;
-
             })
             .catch((e) => {
                 console.log("Erro ao Buscar Projetos" + e);
             });
             
     return projetos;  
-    
 }
 
 
